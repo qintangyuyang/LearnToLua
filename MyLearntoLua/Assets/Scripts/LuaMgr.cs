@@ -31,6 +31,10 @@ public class LuaMgr : MonoBehaviour
         //初始化唯一的luaState
         luaState = new LuaState();
         luaState.Start();
+
+        //委托初始化相关
+        //想要C#和lua相互访问使用委托 必须要在初始化时 把委托工厂初始化了 不然没法使用委托
+        DelegateFactory.Init();
     }
 
     /// <summary>
