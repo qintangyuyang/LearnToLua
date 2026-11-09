@@ -22,3 +22,13 @@ testFun3 = function (a)
     print("多返回值")
     return 1, 2, false, "123", a
 end
+-- 变长参数函数
+testFun4 = function (a, ...)
+    print("变长参数函数")
+    print(a)
+    arg = { ... }
+    for k, v in pairs(arg) do
+        print(k, v)
+    end
+    return
+end

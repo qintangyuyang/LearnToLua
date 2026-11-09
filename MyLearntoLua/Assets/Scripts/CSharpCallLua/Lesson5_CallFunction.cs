@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public delegate int CutomCallOut(int a, out int b, out bool c, out string d, out int e);
+public delegate void CustomCallParams(int a, params object[] objs);
 public class Lesson5_CallFunction : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -98,6 +99,18 @@ public class Lesson5_CallFunction : MonoBehaviour
         Debug.Log("Out接的第一个返回值：" + result);
         Debug.Log(b2 + "_" + c2 + "_" + d2 + "_" + e2);
         #endregion
+
+        #region 变长参数函数
+        //第一种方式 通过自定义委托来执行
+        function = LuaMgr.instance.LuaState.GetFunction("testFun4");
+        //通过委托装载它
+        CustomCallParams call = function.ToDelegate<CustomCallParams>();
+        call(100, 1, true, "1234", 0, false);
+
+        //第二种方式 通过luafunction里面直接call
+        function.Call<int, int, bool, string, int>(100, 99, true, "aaa", 88);
+
+        #endregion 
 
     }
 
