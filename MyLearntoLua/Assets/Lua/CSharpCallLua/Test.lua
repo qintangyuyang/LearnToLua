@@ -12,3 +12,8 @@ local testLocal = 10
 testFun = function ()
     print("无参无返回值")
 end
+-- 有参有返回
+testFun2 = function (a)
+    print("有参有返回")
+    return a + 100
+end
