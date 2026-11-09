@@ -40,9 +40,10 @@ public class LuaMgr : MonoBehaviour
     {
         get
         {
-            return LuaState;
+            return luaState;
         }
     }
+
     /// <summary>
     /// 提供一个外部执行 lua语法字符串的方法
     /// </summary>
