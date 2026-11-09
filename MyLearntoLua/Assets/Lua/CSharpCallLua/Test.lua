@@ -17,3 +17,8 @@ testFun2 = function (a)
     print("有参有返回")
     return a + 100
 end
+-- 多返回值
+testFun3 = function (a)
+    print("多返回值")
+    return 1, 2, false, "123", a
+end

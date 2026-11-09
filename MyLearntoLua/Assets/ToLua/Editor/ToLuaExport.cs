@@ -860,10 +860,41 @@ public static class ToLuaExport
     }
 
     /// <summary>
-    /// 判断委托的 Invoke 方法是否含有 ref / out / in 参数。
-    /// ToLua 生成的委托桥接不支持 byref 参数，例如 Unity 2022 的
-    /// Application.MemoryUsageChangedCallback（参数为 in），生成代码会报
-    /// CS1661 / CS1676 / CS0123。
+    /// 判断参数是否为 in 修饰的只读引用参数。
+    /// ToLua 的委托桥接支持 out / ref 参数，但不支持 in（只读引用），
+    /// 生成代码会报 CS1676 / CS1661 / CS0123。
+    /// 例如 Unity 2022 的 Application.MemoryUsageChangedCallback 参数为 in。
+    /// </summary>
+    static bool IsInParameter(ParameterInfo pi)
+    {
+        if (!pi.ParameterType.IsByRef || pi.IsOut)
+        {
+            return false;
+        }
+
+        if (pi.IsIn)
+        {
+            return true;
+        }
+
+        //兜底：编译器会为 in 参数生成 IsReadOnlyAttribute
+        object[] attrs = pi.GetCustomAttributes(false);
+
+        for (int i = 0; i < attrs.Length; i++)
+        {
+            if (attrs[i].GetType().Name == "IsReadOnlyAttribute")
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// 判断委托的 Invoke 方法是否含有 in（只读引用）参数。
+    /// 注意：out / ref 参数是 ToLua 支持的，不能过滤，否则自定义委托（如带 out 的
+    /// CutomCallOut）将无法注册，运行时报 "Delegate xxx not register"。
     /// </summary>
     public static bool HasByRefDelegateParameter(Type t)
     {
@@ -883,7 +914,7 @@ public static class ToLuaExport
 
         for (int i = 0; i < infos.Length; i++)
         {
-            if (infos[i].ParameterType.IsByRef)
+            if (IsInParameter(infos[i]))
             {
                 return true;
             }

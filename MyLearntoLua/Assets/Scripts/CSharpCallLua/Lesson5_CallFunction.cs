@@ -5,6 +5,7 @@ using LuaInterface;
 using UnityEngine;
 using UnityEngine.Events;
 
+public delegate int CutomCallOut(int a, out int b, out bool c, out string d, out int e);
 public class Lesson5_CallFunction : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -63,6 +64,39 @@ public class Lesson5_CallFunction : MonoBehaviour
         //第四种方式 不得function 直接执行
         result = LuaMgr.instance.LuaState.Invoke<int, int>("testFun2", 800, true);
         Debug.Log("有参有返回值 通过解析器直接调用" + result);
+        #endregion
+
+        #region 多返回值
+        //第一种方式 通过Call的形式
+        function = LuaMgr.instance.LuaState.GetFunction("testFun3");
+        //开始调用
+        function.BeginPCall();
+        //传参
+        function.Push(1000);
+        //传参结束 开始调用
+        function.PCall();
+        //得到返回值
+        int a1 = (int)function.CheckNumber();
+        int b1 = (int)function.CheckNumber();
+        bool c1 = function.CheckBoolean();
+        string d1 = function.CheckString();
+        int e1 = (int)function.CheckNumber();
+        //执行结束
+        function.EndPCall();
+        Debug.Log("Check接的第一个返回值：" + a1);
+        Debug.Log(b1 + "_" + c1 + "_" + d1 + "_" + e1);
+
+        //第二种方式 通过 out来接
+        //如果是自定义委托 用来装Lua 必须做在关键文件 CustomSetting 中去加上自定义委托
+        //加好后 在菜单栏lua中去生成lua代码 不然会报错
+        CutomCallOut callOut = function.ToDelegate<CutomCallOut>();
+        int b2;
+        bool c2;
+        string d2;
+        int e2;
+        result = callOut(999, out b2, out c2, out d2, out e2);
+        Debug.Log("Out接的第一个返回值：" + result);
+        Debug.Log(b2 + "_" + c2 + "_" + d2 + "_" + e2);
         #endregion
 
     }
