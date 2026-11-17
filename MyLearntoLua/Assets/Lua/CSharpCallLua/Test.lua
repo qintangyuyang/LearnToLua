@@ -39,3 +39,14 @@ testList2 = { "123", "123", true, 1, 1.2 }
 -- table表现的Dictionary
 testDic = { ["1"] = 1, ["2"] = 10, ["3"] = 20, ["4"] = 30 }
 testDic2 = { ["1"] = 1, [true] = 1, [false] = true, ["123"] = false }
+
+-- lua中的一个自定义table（类）
+testClass = {
+    testInt = 1,
+    testBool = true,
+    testFloat = 1.2,
+    testString = "123",
+    testFun = function ()
+        print("表中的函数打印")
+    end
+}
