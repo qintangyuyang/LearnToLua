@@ -32,3 +32,10 @@ testFun4 = function (a, ...)
     end
     return
 end
+
+-- table表现的list
+testList = { 10, 20, 30, 40, 50, 60 }
+testList2 = { "123", "123", true, 1, 1.2 }
+-- table表现的Dictionary
+testDic = { ["1"] = 1, ["2"] = 10, ["3"] = 20, ["4"] = 30 }
+testDic2 = { ["1"] = 1, [true] = 1, [false] = true, ["123"] = false }
