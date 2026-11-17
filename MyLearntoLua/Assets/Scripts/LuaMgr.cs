@@ -35,6 +35,11 @@ public class LuaMgr : MonoBehaviour
         //委托初始化相关
         //想要C#和lua相互访问使用委托 必须要在初始化时 把委托工厂初始化了 不然没法使用委托
         DelegateFactory.Init();
+
+        //协程相关 如果要让tolua的协程跑起来 必须添加一个脚本
+        LuaLooper loop = this.gameObject.AddComponent<LuaLooper>();
+        //将我们自己申明的解析器和 lualooper绑定起来 就可以让协程跑起来了
+        loop.luaState = luaState;
     }
 
     /// <summary>

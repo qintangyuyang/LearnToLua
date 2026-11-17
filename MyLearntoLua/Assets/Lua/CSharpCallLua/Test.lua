@@ -50,3 +50,32 @@ testClass = {
         print("表中的函数打印")
     end
 }
+
+-- lua协程相关的代码
+local coDelay = nil
+
+-- 开启协程
+-- 协程相关的lua逻辑 这些内容都是toLua帮我们实现好的
+-- lua自带的 creat resume yield status wrap running
+StartDelay = function ()
+    coDelay = coroutine.start(Delay)
+end
+
+Delay = function ()
+    local c = 1
+    while true do
+        -- 等待一秒执行一次逻辑
+        coroutine.wait(1)
+        print("Count:" .. c)
+        c = c + 1
+        if c >= 5 then
+            StopDelay()
+            break
+        end
+    end
+end
+
+-- 停止协程
+StopDelay = function ()
+    coroutine.stop(coDelay)
+end
