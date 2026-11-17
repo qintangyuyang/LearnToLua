@@ -961,7 +961,10 @@ public static class ToLuaExport
 
         for (int i = 0; i < infos.Length; i++)
         {
-            if (IsRefStructType(infos[i].ParameterType))
+            Type parameterType = infos[i].ParameterType;
+
+            //指针（如 byte*）同样无法映射到 Lua，会生成 CheckObject<byte*> 这类无法编译的代码
+            if (parameterType.IsPointer || IsRefStructType(parameterType))
             {
                 return true;
             }

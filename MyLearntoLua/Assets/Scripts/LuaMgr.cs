@@ -40,6 +40,9 @@ public class LuaMgr : MonoBehaviour
         LuaLooper loop = this.gameObject.AddComponent<LuaLooper>();
         //将我们自己申明的解析器和 lualooper绑定起来 就可以让协程跑起来了
         loop.luaState = luaState;
+
+        //lua使用Unity中的类相关
+        LuaBinder.Bind(luaState);
     }
 
     /// <summary>
