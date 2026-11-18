@@ -14,6 +14,7 @@ public static class LuaBinder
 		TestWrap.Register(L);
 		E_MyEnumWrap.Register(L);
 		Lesson3Wrap.Register(L);
+		Lesson4Wrap.Register(L);
 		LuaProfilerWrap.Register(L);
 		L.RegFunction("CutomCallOut", CutomCallOut);
 		L.RegFunction("CustomCallParams", CustomCallParams);

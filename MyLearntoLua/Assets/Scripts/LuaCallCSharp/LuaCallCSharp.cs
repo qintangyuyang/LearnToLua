@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //类
@@ -46,6 +47,30 @@ public class Lesson3
     public int[] array = new int[5] { 1, 2, 3, 4, 5 };
     public List<int> list = new List<int>();
     public Dictionary<int, string> dic = new Dictionary<int, string>();
+}
+#endregion
+
+//扩展方法相关
+#region Lesson4 CallFunction
+public static class Tools
+{
+    public static void Move(this Lesson4 obj)
+    {
+        Debug.Log(obj.Name + "移动");
+    }
+}
+public class Lesson4
+{
+    public string Name = "Lesson4";
+    public void Speak(string str)
+    {
+        Debug.Log(str);
+    }
+
+    public static void Eat()
+    {
+        Debug.Log("吃东西");
+    }
 }
 #endregion
 
