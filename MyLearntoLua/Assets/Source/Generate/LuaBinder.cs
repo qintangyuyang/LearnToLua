@@ -12,6 +12,7 @@ public static class LuaBinder
 		LuaInterface_DebuggerWrap.Register(L);
 		LuaCallCSharpWrap.Register(L);
 		TestWrap.Register(L);
+		E_MyEnumWrap.Register(L);
 		LuaProfilerWrap.Register(L);
 		L.RegFunction("CutomCallOut", CutomCallOut);
 		L.RegFunction("CustomCallParams", CustomCallParams);
@@ -21,6 +22,7 @@ public static class LuaBinder
 		L.EndModule();
 		L.BeginModule("UnityEngine");
 		UnityEngine_DebugWrap.Register(L);
+		UnityEngine_PrimitiveTypeWrap.Register(L);
 		UnityEngine_ComponentWrap.Register(L);
 		UnityEngine_TransformWrap.Register(L);
 		UnityEngine_MaterialWrap.Register(L);

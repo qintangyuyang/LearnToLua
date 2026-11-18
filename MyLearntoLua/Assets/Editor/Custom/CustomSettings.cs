@@ -66,6 +66,8 @@ public static class CustomSettings
         _GT(typeof(LuaCallCSharp)),          
         _GT(typeof(Test)),          
         _GT(typeof(AAA.Test2)),          
+        _GT(typeof(PrimitiveType)),          
+        _GT(typeof(E_MyEnum)),          
 
 #if USING_DOTWEENING
         _GT(typeof(DG.Tweening.DOTween)),

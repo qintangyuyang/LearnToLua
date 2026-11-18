@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//类
 #region Lesson1_CallClass
 public class Test
 {
@@ -22,6 +23,19 @@ namespace AAA
     }
 }
 
+#endregion
+
+//枚举
+#region Lesson2_CallEnum
+/// <summary>
+/// 自定义枚举
+/// </summary>
+public enum E_MyEnum
+{
+    Idle,
+    Move,
+    Atk
+}
 #endregion
 
 public class LuaCallCSharp : MonoBehaviour
