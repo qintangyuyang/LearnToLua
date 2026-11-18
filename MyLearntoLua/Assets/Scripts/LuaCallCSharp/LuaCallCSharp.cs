@@ -44,6 +44,8 @@ public enum E_MyEnum
 public class Lesson3
 {
     public int[] array = new int[5] { 1, 2, 3, 4, 5 };
+    public List<int> list = new List<int>();
+    public Dictionary<int, string> dic = new Dictionary<int, string>();
 }
 #endregion
 

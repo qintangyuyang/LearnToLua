@@ -70,6 +70,9 @@ public static class CustomSettings
         _GT(typeof(E_MyEnum)),          
         _GT(typeof(Lesson3)),          
         _GT(typeof(System.Int32)),          
+        _GT(typeof(List<string>)),          
+        _GT(typeof(Dictionary<int,string>)),          
+        _GT(typeof(Dictionary<string,int>)),          
 
 #if USING_DOTWEENING
         _GT(typeof(DG.Tweening.DOTween)),
