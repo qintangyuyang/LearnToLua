@@ -74,6 +74,33 @@ public class Lesson4
 }
 #endregion
 
+//ref和out
+#region Lesson5 CallFunction ref out
+public class Lesson5
+{
+    public int RefFun(int a, ref int b, ref int c, int d)
+    {
+        b = a + d;
+        c = a - d;
+        return 100;
+    }
+
+    public int OutFun(int a, out int b, out int c, int d)
+    {
+        b = a;
+        c = d;
+        return 200;
+    }
+
+    public int RefOutFun(int a,out int b,ref int c)
+    {
+        b = a * 10;
+        c = a * 20;
+        return 300;
+    }
+}
+#endregion
+
 public class LuaCallCSharp : MonoBehaviour
 {
     // Start is called before the first frame update
