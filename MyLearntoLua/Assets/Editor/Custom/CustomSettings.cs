@@ -68,6 +68,8 @@ public static class CustomSettings
         _GT(typeof(AAA.Test2)),          
         _GT(typeof(PrimitiveType)),          
         _GT(typeof(E_MyEnum)),          
+        _GT(typeof(Lesson3)),          
+        _GT(typeof(System.Int32)),          
 
 #if USING_DOTWEENING
         _GT(typeof(DG.Tweening.DOTween)),

@@ -13,6 +13,7 @@ public static class LuaBinder
 		LuaCallCSharpWrap.Register(L);
 		TestWrap.Register(L);
 		E_MyEnumWrap.Register(L);
+		Lesson3Wrap.Register(L);
 		LuaProfilerWrap.Register(L);
 		L.RegFunction("CutomCallOut", CutomCallOut);
 		L.RegFunction("CustomCallParams", CustomCallParams);
@@ -86,6 +87,7 @@ public static class LuaBinder
 		AAA_Test2Wrap.Register(L);
 		L.EndModule();
 		L.BeginModule("System");
+		System_Int32Wrap.Register(L);
 		L.RegFunction("Action", System_Action);
 		L.RegFunction("Predicate_int", System_Predicate_int);
 		L.RegFunction("Action_int", System_Action_int);

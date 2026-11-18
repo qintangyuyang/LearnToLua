@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,14 @@ public enum E_MyEnum
     Idle,
     Move,
     Atk
+}
+#endregion
+
+//数组
+#region Lesson3 CallArray List Dic
+public class Lesson3
+{
+    public int[] array = new int[5] { 1, 2, 3, 4, 5 };
 }
 #endregion
 
