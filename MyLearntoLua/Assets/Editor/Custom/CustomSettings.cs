@@ -75,6 +75,7 @@ public static class CustomSettings
         _GT(typeof(Dictionary<string,int>)),
         _GT(typeof(Lesson4)).AddExtendType(typeof(Tools)),     
         _GT(typeof(Lesson5)),  
+        _GT(typeof(Lesson6)),  
 
 #if USING_DOTWEENING
         _GT(typeof(DG.Tweening.DOTween)),

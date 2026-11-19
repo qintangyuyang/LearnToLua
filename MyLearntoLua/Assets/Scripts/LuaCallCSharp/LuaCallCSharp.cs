@@ -101,6 +101,46 @@ public class Lesson5
 }
 #endregion
 
+#region Lesson6 CallFunction 重载
+public class Lesson6
+{
+    public int Calc()
+    {
+        return 100;
+    }
+
+    public int Calc(int a)
+    {
+        Debug.Log("int");
+        return a;
+    }
+
+    public float Calc(float a)
+    {
+        Debug.Log("float");
+        return a;
+    }
+
+    public string Calc(string a)
+    {
+        Debug.Log("string");
+        return a;
+    }
+
+    public int Calc(int a, int b)
+    {
+        return a + b;
+    }
+
+    public int Calc(int a, out int b)
+    {
+        b = 10;
+        return a + b;
+    }
+    
+}
+#endregion
+
 public class LuaCallCSharp : MonoBehaviour
 {
     // Start is called before the first frame update
