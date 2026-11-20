@@ -17,6 +17,7 @@ public static class LuaBinder
 		Lesson4Wrap.Register(L);
 		Lesson5Wrap.Register(L);
 		Lesson6Wrap.Register(L);
+		Lesson7Wrap.Register(L);
 		LuaProfilerWrap.Register(L);
 		L.RegFunction("CutomCallOut", CutomCallOut);
 		L.RegFunction("CustomCallParams", CustomCallParams);

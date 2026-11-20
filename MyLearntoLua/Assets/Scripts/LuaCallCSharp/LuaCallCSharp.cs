@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 //类
 #region Lesson1_CallClass
@@ -138,6 +139,32 @@ public class Lesson6
         return a + b;
     }
     
+}
+#endregion
+
+#region Lesson7 CallDel Event
+public class Lesson7
+{
+    public UnityAction del;
+    public event UnityAction eventAction;
+    public void DoDel()
+    {
+        if (del != null)
+        {
+            del();
+        }
+    }
+    public void DoEvent()
+    {
+        if (eventAction != null)
+        {
+            eventAction();
+        }
+    }
+    public void CleanEvent()
+    {
+        eventAction = null;
+    }
 }
 #endregion
 
