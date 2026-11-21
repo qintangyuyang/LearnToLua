@@ -41,6 +41,9 @@ public class LuaMgr : MonoBehaviour
         //将我们自己申明的解析器和 lualooper绑定起来 就可以让协程跑起来了
         loop.luaState = luaState;
 
+        //lua协程注册
+        LuaCoroutine.Register(luaState, this);
+
         //lua使用Unity中的类相关
         LuaBinder.Bind(luaState);
     }
